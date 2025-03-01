@@ -29,7 +29,7 @@ body {
 }
 .game .container {
   margin: 0 auto;
-  width: 600px;
+  max-width: 600px;
 }
 .game .container .chooseSection {
   background-color: white;
@@ -138,12 +138,38 @@ body {
   font-weight: bold;
   background-color: #eee;
 }
-.game .container .center .input {
+.game .container .center .input-wraper {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: relative;
+}
+.game .container .center .input-wraper .input {
   all: unset;
   margin: 10px 0;
   padding: 10px;
   border: 2px solid #005cc8;
   background-color: #eee;
+  width: calc(100% - 50px);
+}
+.game .container .center .input-wraper i {
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  background-color: #27ae60;
+  padding: 9px;
+  width: 50px;
+  height: calc(100% - 20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.game .container .center .input-wraper i:hover {
+  color: white;
 }
 .game .container .center button {
   all: unset;

@@ -27,18 +27,13 @@
           <span class="btn">Retry</span>
         </div>
         <div class="gameSection">
-          <div class="top">
-            You Are Playing On The <span class="type"></span> Mode & You Have
-            <span class="time"></span> secounds To Type The word
-          </div>
+          <div class="top">You Are Playing On The <span class="type"></span> Mode & You Have <span class="time"></span> secounds To Type The word</div>
           <div class="center">
             <span class="word"></span>
-            <input
-              type="text"
-              class="input"
-              placeholder="Type The word here"
-              disabled
-            />
+            <div class="input-wraper">
+              <input type="text" class="input" placeholder="Type The word here" disabled />
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
             <button>Start The Game</button>
             <div class="passedWords">
               Here You Will See All The Words You Have Passed
@@ -46,12 +41,8 @@
             </div>
           </div>
           <div class="bottom">
-            <span class="timerSection"
-              >Time Left: <span class="timer"></span> Secounds</span
-            >
-            <span class="scoreSection"
-              >Score: <span class="score"></span> - <span class="all"></span
-            ></span>
+            <span class="timerSection">Time Left: <span class="timer"></span> Secounds</span>
+            <span class="scoreSection">Score: <span class="score"></span> - <span class="all"></span></span>
           </div>
         </div>
         <span class="gameover"> Game Over </span>
