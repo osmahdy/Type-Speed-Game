@@ -6,6 +6,7 @@ let type = document.querySelector(`.game .container .gameSection .top .type`);
 let time = document.querySelector(`.game .container .gameSection .top .time`);
 let btn = document.querySelector(`.game .container .gameSection .center button`);
 let input = document.querySelector(`.game .container .center .input`);
+let nextbtn = document.querySelector(`.game .container .center .input-wraper i`);
 let word = document.querySelector(`.game .container .gameSection .center .word `);
 let timer = document.querySelector(`.game .container .bottom .timer`);
 let score = document.querySelector(`.game .container .bottom .score`);
@@ -90,6 +91,23 @@ input.addEventListener('input', () => {
   }
 });
 
+nextbtn.onclick = () => {
+  if (input.value === word.textContent.toLowerCase()) {
+    i++;
+    word.textContent = words[i];
+    input.value = '';
+    clearInterval(counterInterval);
+    counter = currentCounter;
+    Qcounter();
+    score.textContent = i;
+    let passedWord = document.createElement(`span`);
+    passedWord.textContent = words[i - 1];
+    passedWords.appendChild(passedWord);
+  }
+  if (i === words.length) {
+    showFinalscore();
+  }
+};
 function showFinalscore() {
   gameSection.style.display = 'none';
   rankSection.style.display = 'flex';
