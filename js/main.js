@@ -22,8 +22,11 @@ let counter;
 let currentCounter;
 let i = 0;
 let counterInterval;
-all.textContent = words.length;
-score.textContent = i;
+window.onload = () => {
+  all.textContent = words.length;
+  score.textContent = i;
+  input.value = '';
+};
 modes.forEach((mode) => {
   mode.onclick = () => {
     if (mode.textContent === 'Easy') {
@@ -40,6 +43,7 @@ modes.forEach((mode) => {
       time.textContent = `[${counter}]`;
     }
     input.setAttribute('disabled', true);
+    nextbtn.style.pointerEvents = 'none';
     chooseSection.style.display = 'none';
     gameSection.style.display = 'block';
     btn.style.display = 'block';
@@ -48,6 +52,7 @@ modes.forEach((mode) => {
 });
 btn.onclick = () => {
   input.removeAttribute('disabled');
+  nextbtn.style.pointerEvents = 'auto';
   word.style.display = 'block';
   word.textContent = words[i];
   btn.style.display = 'none';
@@ -68,13 +73,14 @@ function Qcounter() {
       btn.style.display = 'block';
       word.style.display = 'none';
       input.setAttribute('disabled', true);
+      nextbtn.style.pointerEvents = 'none';
       showFinalscore();
     }
   }, 1000);
 }
 
 input.addEventListener('input', () => {
-  if (input.value === word.textContent.toLowerCase()) {
+  if (input.value.trim().toLowerCase() === word.textContent.toLowerCase()) {
     i++;
     word.textContent = words[i];
     input.value = '';
@@ -91,7 +97,8 @@ input.addEventListener('input', () => {
   }
 });
 
-nextbtn.onclick = () => {
+nextbtn.addEventListener('click', () => {
+  console.log('next btn');
   if (input.value === word.textContent.toLowerCase()) {
     i++;
     word.textContent = words[i];
@@ -103,11 +110,12 @@ nextbtn.onclick = () => {
     let passedWord = document.createElement(`span`);
     passedWord.textContent = words[i - 1];
     passedWords.appendChild(passedWord);
+    console.log('here');
   }
   if (i === words.length) {
     showFinalscore();
   }
-};
+});
 function showFinalscore() {
   gameSection.style.display = 'none';
   rankSection.style.display = 'flex';
